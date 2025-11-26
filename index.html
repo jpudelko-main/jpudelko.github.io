@@ -6,12 +6,18 @@
   <title>Jakub Pudelko – Bioinformatics Portfolio</title>
   <meta name="description" content="Portfolio bioinformatyki: NGS, QSAR, projekty uczelniane, praca licencjacka." />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🧬</text></svg>">
+
   <style>
     :root{
+      /* paleta motywu – zmień kolory, by spersonalizować */
       --bg:#0b1220; --card:#121a2b; --muted:#9fb0d9; --text:#e6edff; --accent:#7cc0ff; --accent-2:#94f7c5;
     }
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif}
+    html,body{
+      margin:0;padding:0;background:var(--bg);color:var(--text);
+      /* Consolas + monospace fallback */
+      font:16px/1.6 Consolas, "SFMono-Regular", "Liberation Mono", Menlo, Monaco, ui-monospace, monospace;
+    }
     a{color:var(--accent);text-decoration:none}
     a:hover{text-decoration:underline}
     .wrap{max-width:1100px;margin:0 auto;padding:24px}
@@ -37,21 +43,32 @@
     .tag{display:inline-block;background:#0a1326;border:1px solid #24345e;color:#cfe0ff;padding:2px 8px;border-radius:999px;margin-right:6px;margin-bottom:6px;font-size:12px}
     .pdfbox{height:70vh;border:1px solid #24345e;border-radius:12px;overflow:hidden}
     .note{font-size:13px;color:#a8b6dc}
+
+    /* AVATAR – zdjęcie w lewym górnym rogu */
+    .avatar{
+      width:56px; height:56px;           /* zmień np. na 72/88 px */
+      border-radius:12px;                 /* 50% = kółko */
+      object-fit:cover; display:block;
+      border:1px solid #223055;
+    }
   </style>
 </head>
 <body>
   <div class="wrap">
     <header>
       <div class="brand">
-        <div class="logo">DNA</div>
+        <!-- Zdjęcie profilowe; wrzuć plik do assets/me.jpg (lub zmień ścieżkę) -->
+        <img class="avatar" src="assets/me.jpg" alt="Jakub Pudelko – zdjęcie profilowe" />
+        <!-- Fallback logo (gdybyś nie chciał zdjęcia): <div class="logo">DNA</div> -->
         <div>
-          <strong>Imię Nazwisko</strong><br/>
-          <span class="muted">Junior Bioinformatics • NGS • Python/R</span>
+          <strong>Jakub Pudelko</strong><br/>
+          <span class="muted">Junior Bioinformatics • NGS • Python</span>
         </div>
       </div>
       <nav>
         <a class="btn" href="#projects">Projekty</a>
         <a class="btn" href="#skills">Umiejętności</a>
+        <a class="btn" href="#about">O mnie</a>
         <a class="btn" href="#thesis">Praca licencjacka</a>
         <a class="btn primary" href="cv_ngs.pdf" download>📄 Pobierz CV</a>
       </nav>
@@ -60,7 +77,7 @@
     <section class="hero">
       <div class="card">
         <h1>Cześć! Buduję powtarzalne analizy NGS</h1>
-        <p>NGS (QC → mapowanie → zliczanie → DE), filogenetyka oraz podstawy QSAR/dockingu. Pracuję w <strong>Python/R</strong>, automatyzuję w <strong>Snakemake</strong>, dokumentuję w <strong>Jupyter/R Markdown</strong>.</p>
+        <p>NGS (QC → mapowanie → zliczanie → DE), filogenetyka oraz podstawy QSAR/dockingu. Pracuję w <strong>Python/R</strong>, automatyzuję w <strong>Snakemake</strong>, dokumentuję w <strong>Jupyter/R Markdown</strong>.</p>
         <p>
           <a class="btn primary" href="#projects">Zobacz projekty</a>
           <a class="btn" href="https://github.com/twojgithub" target="_blank" rel="noopener">GitHub</a>
@@ -81,6 +98,27 @@
       </div>
     </section>
 
+    <!-- O MNIE -->
+    <section id="about" class="card" style="margin-top:16px">
+      <h2>O mnie</h2>
+      <p>
+        Absolwent bioinformatyki (Lic., 2025). Buduję powtarzalne analizy NGS
+        (QC → mapowanie → zliczanie → DE), filogenetykę oraz podstawy QSAR/dockingu.
+        Pracuję w Python/R, automatyzuję w Snakemake, dokumentuję w Jupyter/R Markdown.
+        Szukam roli Junior Bioinformatics Analyst / Intern.
+      </p>
+      <ul>
+        <li><strong>Specjalizacje:</strong> NGS, RNA-seq, filogenetyka, QSAR (podstawy)</li>
+        <li><strong>Stack:</strong> Python, R, Snakemake, Git/GitHub, Linux, Jupyter</li>
+        <li><strong>Zainteresowania:</strong> medycyna spersonalizowana, projektowanie leków, toksykologia obliczeniowa</li>
+        <li><strong>Tryb pracy:</strong> Gdańsk / zdalnie / hybrydowo (otwarty na relokację)</li>
+      </ul>
+      <!-- Opcjonalne dodatkowe zdjęcie w treści:
+      <img src="assets/ja2.jpg" alt="Jakub – zdjęcie" style="max-width:180px;border-radius:12px" />
+      -->
+    </section>
+
+    <!-- PROJEKTY -->
     <section id="projects" class="card" style="margin-top:16px">
       <h2>Projekty</h2>
       <div class="grid">
@@ -91,7 +129,7 @@
         </article>
         <article class="card">
           <h3>Operon <em>spv</em> (Thesis)</h3>
-          <p>BLAST API (Python), MSA (Clustal Ω), syntenia, AlphaFold.</p>
+          <p>BLAST API (Python), MSA (Clustal Ω), syntenia, AlphaFold.</p>
           <p><a href="#thesis">Zobacz PDF</a> · <a href="https://github.com/twojgithub/spv-thesis" target="_blank" rel="noopener">Repo</a></p>
         </article>
         <article class="card">
@@ -102,6 +140,7 @@
       </div>
     </section>
 
+    <!-- UMIEJĘTNOŚCI -->
     <section id="skills" class="card" style="margin-top:16px">
       <h2>Umiejętności</h2>
       <p><strong>NGS:</strong> FastQC, Trimmomatic, HISAT2/BWA, SAMtools, featureCounts, DESeq2, GATK, bcftools, IGV</p>
@@ -109,6 +148,7 @@
       <p><strong>CADD/QSAR:</strong> RDKit, scikit-learn, AutoDock Vina (podstawy)</p>
     </section>
 
+    <!-- PRACA LICENCJACKA -->
     <section id="thesis" class="card" style="margin-top:16px">
       <h2>Praca licencjacka (PDF)</h2>
       <details open>
@@ -126,10 +166,12 @@
     </section>
 
     <footer class="footer">
-      © <span id="y"></span> Imię Nazwisko · <a href="mailto:you@domain.com">you@domain.com</a> · 
+      © <span id="y"></span> Jakub Pudelko · <a href="mailto:you@domain.com">you@domain.com</a> · 
       <a href="https://www.linkedin.com/in/twojlinkedin" target="_blank" rel="noopener">LinkedIn</a>
     </footer>
   </div>
+
+  <!-- wstawia bieżący rok do stopki -->
   <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>
