@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jakub Pudelko – Bioinformatics Portfolio</title>
+  <meta name="description" content="Portfolio bioinformatyki: NGS, QSAR, projekty uczelniane, praca licencjacka." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🧬</text></svg>">
+  <style>
+    :root{
+      --bg:#0b1220; --card:#121a2b; --muted:#9fb0d9; --text:#e6edff; --accent:#7cc0ff; --accent-2:#94f7c5;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:1100px;margin:0 auto;padding:24px}
+    header{display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:grid;place-items:center;color:#001226;font-weight:700}
+    nav{display:flex;gap:14px;flex-wrap:wrap}
+    .btn{display:inline-block;padding:10px 14px;border-radius:12px;background:#1a2540;color:var(--text);border:1px solid #223055}
+    .btn:hover{background:#1f2d52}
+    .btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#001226;border:none}
+    .muted{color:var(--muted)}
+    .hero{margin:24px 0 8px;display:grid;grid-template-columns:1.2fr .8fr;gap:24px}
+    @media (max-width: 900px){.hero{grid-template-columns:1fr}}
+    .card{background:var(--card);border:1px solid #223055;border-radius:16px;padding:18px}
+    h1{font-size:clamp(26px,4vw,36px);margin:0 0 6px}
+    h2{font-size:clamp(20px,3vw,26px);margin:0 0 12px}
+    h3{font-size:18px;margin:0 0 10px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    @media (max-width: 900px){.grid{grid-template-columns:1fr 1fr}}
+    @media (max-width: 640px){.grid{grid-template-columns:1fr}}
+    .footer{margin:32px 0;color:var(--muted);font-size:14px}
+    .kbd{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;background:#0a1326;border:1px solid #24345e;border-radius:6px;padding:2px 6px}
+    .tag{display:inline-block;background:#0a1326;border:1px solid #24345e;color:#cfe0ff;padding:2px 8px;border-radius:999px;margin-right:6px;margin-bottom:6px;font-size:12px}
+    .pdfbox{height:70vh;border:1px solid #24345e;border-radius:12px;overflow:hidden}
+    .note{font-size:13px;color:#a8b6dc}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">DNA</div>
+        <div>
+          <strong>Imię Nazwisko</strong><br/>
+          <span class="muted">Junior Bioinformatics • NGS • Python/R</span>
+        </div>
+      </div>
+      <nav>
+        <a class="btn" href="#projects">Projekty</a>
+        <a class="btn" href="#skills">Umiejętności</a>
+        <a class="btn" href="#thesis">Praca licencjacka</a>
+        <a class="btn primary" href="cv_ngs.pdf" download>📄 Pobierz CV</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="card">
+        <h1>Cześć! Buduję powtarzalne analizy NGS</h1>
+        <p>NGS (QC → mapowanie → zliczanie → DE), filogenetyka oraz podstawy QSAR/dockingu. Pracuję w <strong>Python/R</strong>, automatyzuję w <strong>Snakemake</strong>, dokumentuję w <strong>Jupyter/R Markdown</strong>.</p>
+        <p>
+          <a class="btn primary" href="#projects">Zobacz projekty</a>
+          <a class="btn" href="https://github.com/twojgithub" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn" href="mailto:you@domain.com">Kontakt</a>
+        </p>
+        <p class="note">Tip: Zmień linki na swoje. Dodaj <span class="kbd">cv_ngs.pdf</span> i <span class="kbd">thesis.pdf</span> do katalogu głównego.</p>
+      </div>
+      <div class="card">
+        <h2>Highlights</h2>
+        <ul>
+          <li>RNA-seq mini-pipeline: FastQC → HISAT2 → featureCounts → DESeq2</li>
+          <li>Operon <em>spv</em>: pobór danych (NCBI/BLAST API), MSA, syntenia, AlphaFold</li>
+          <li>QSAR demo: RDKit + scikit-learn (walidacja zewnętrzna)</li>
+        </ul>
+        <div>
+          <span class="tag">Python</span><span class="tag">R</span><span class="tag">Snakemake</span><span class="tag">DESeq2</span><span class="tag">GATK</span><span class="tag">IGV</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="card" style="margin-top:16px">
+      <h2>Projekty</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>RNA-seq Pipeline</h3>
+          <p>QC → align → count → DE + raport HTML. Reproducible, Snakemake.</p>
+          <p><a href="https://github.com/twojgithub/rnaseq-pipeline" target="_blank" rel="noopener">Repo</a> · <a href="#" onclick="alert('Wstaw link do demo/raportu')">Demo</a></p>
+        </article>
+        <article class="card">
+          <h3>Operon <em>spv</em> (Thesis)</h3>
+          <p>BLAST API (Python), MSA (Clustal Ω), syntenia, AlphaFold.</p>
+          <p><a href="#thesis">Zobacz PDF</a> · <a href="https://github.com/twojgithub/spv-thesis" target="_blank" rel="noopener">Repo</a></p>
+        </article>
+        <article class="card">
+          <h3>QSAR toksyczności</h3>
+          <p>RDKit + scikit-learn, walidacja, metryki i interpretacja.</p>
+          <p><a href="https://github.com/twojgithub/chemoinformatics-qsar" target="_blank" rel="noopener">Repo</a></p>
+        </article>
+      </div>
+    </section>
+
+    <section id="skills" class="card" style="margin-top:16px">
+      <h2>Umiejętności</h2>
+      <p><strong>NGS:</strong> FastQC, Trimmomatic, HISAT2/BWA, SAMtools, featureCounts, DESeq2, GATK, bcftools, IGV</p>
+      <p><strong>Kod/analiza:</strong> Python, R, Jupyter, Bash, Git/GitHub, Linux, Snakemake</p>
+      <p><strong>CADD/QSAR:</strong> RDKit, scikit-learn, AutoDock Vina (podstawy)</p>
+    </section>
+
+    <section id="thesis" class="card" style="margin-top:16px">
+      <h2>Praca licencjacka (PDF)</h2>
+      <details open>
+        <summary>Podgląd osadzony (kliknij, aby zwinąć/rozwinąć)</summary>
+        <div class="pdfbox" role="region" aria-label="Podgląd PDF">
+          <!-- Umieść plik thesis.pdf w tym samym folderze co index.html -->
+          <iframe src="thesis.pdf" title="Praca licencjacka" width="100%" height="100%" style="border:0"></iframe>
+        </div>
+      </details>
+      <p>
+        <a class="btn primary" href="thesis.pdf" target="_blank" rel="noopener">Otwórz w nowej karcie</a>
+        <a class="btn" href="thesis.pdf" download>Pobierz PDF</a>
+      </p>
+      <p class="note">Jeśli PDF nie ładuje się u kogoś w przeglądarce, link „Otwórz” zawsze zadziała.</p>
+    </section>
+
+    <footer class="footer">
+      © <span id="y"></span> Imię Nazwisko · <a href="mailto:you@domain.com">you@domain.com</a> · 
+      <a href="https://www.linkedin.com/in/twojlinkedin" target="_blank" rel="noopener">LinkedIn</a>
+    </footer>
+  </div>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>
