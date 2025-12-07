@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jakub Pudelko – Bioinformatics Portfolio</title>
+  <meta name="description" content="Portfolio bioinformatyki: NGS, QSAR, projekty uczelniane, praca licencjacka." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🧬</text></svg>">
+
+  <style>
+    :root{
+      /* paleta motywu – zmień kolory, by spersonalizować */
+      --bg:#0b1220; --card:#121a2b; --muted:#9fb0d9; --text:#e6edff; --accent:#7cc0ff; --accent-2:#94f7c5;
+    }
+    *{box-sizing:border-box}
+    html,body{
+      margin:0;padding:0;background:var(--bg);color:var(--text);
+      font:16px/1.6 Consolas, "SFMono-Regular", "Liberation Mono", Menlo, Monaco, ui-monospace, monospace;
+    }
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:1100px;margin:0 auto;padding:24px}
+    header{display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:grid;place-items:center;color:#001226;font-weight:700}
+    nav{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+    .btn{display:inline-block;padding:10px 14px;border-radius:12px;background:#1a2540;color:var(--text);border:1px solid #223055;cursor:pointer}
+    .btn:hover{background:#1f2d52}
+    .btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#001226;border:none}
+    .muted{color:var(--muted)}
+    .hero{margin:24px 0 8px;display:grid;grid-template-columns:1.2fr .8fr;gap:24px}
+    @media (max-width: 900px){.hero{grid-template-columns:1fr}}
+    .card{background:var(--card);border:1px solid #223055;border-radius:16px;padding:18px}
+    h1{font-size:clamp(26px,4vw,36px);margin:0 0 6px}
+    h2{font-size:clamp(20px,3vw,26px);margin:0 0 12px}
+    h3{font-size:18px;margin:0 0 10px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    @media (max-width: 900px){.grid{grid-template-columns:1fr 1fr}}
+    @media (max-width: 640px){.grid{grid-template-columns:1fr}}
+    .footer{margin:32px 0;color:var(--muted);font-size:14px}
+    .kbd{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;background:#0a1326;border:1px solid #24345e;border-radius:6px;padding:2px 6px}
+    .tag{display:inline-block;background:#0a1326;border:1px solid #24345e;color:#cfe0ff;padding:2px 8px;border-radius:999px;margin-right:6px;margin-bottom:6px;font-size:12px}
+    .pdfbox{height:70vh;border:1px solid #24345e;border-radius:12px;overflow:hidden}
+    .note{font-size:13px;color:#a8b6dc}
+
+    /* AVATAR – zdjęcie w lewym górnym rogu */
+    .avatar{
+      width:56px; height:56px;
+      border-radius:12px;
+      object-fit:cover; display:block;
+      border:1px solid #223055;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <img class="avatar" src="assets/me.jpg" alt="Jakub Pudelko – zdjęcie profilowe" />
+        <div>
+          <strong id="name-heading">Jakub Pudelko</strong><br/>
+          <span class="muted" id="subtitle">Junior Bioinformatics • NGS • Python</span>
+        </div>
+      </div>
+      <nav>
+        <a class="btn" href="#projects" id="nav-projects">Projekty</a>
+        <a class="btn" href="#skills" id="nav-skills">Umiejętności</a>
+        <a class="btn" href="#about" id="nav-about">O mnie</a>
+        <a class="btn" href="#thesis" id="nav-thesis">Praca licencjacka</a>
+        <a class="btn" href="#contact" id="nav-contact">Kontakt</a>
+        <button class="btn" id="lang-toggle" type="button">EN</button>
+        <a class="btn primary" href="cv_ngs.pdf" download id="nav-cv">📄 Pobierz CV</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="card">
+        <h1 id="hero-title">
+          Cześć! Szukam wymagającej roli w innowacyjnej organizacji, w której jako bioinformatyk rozwinę swoje umiejętności analityczne i techniczne.
+        </h1>
+        <p id="hero-sub">
+          Interesuje mnie praca z NGS, bioinformatyką strukturalną i chemią obliczeniową – wszędzie tam, gdzie dane realnie coś zmieniają.
+        </p>
+        <p>
+          <a class="btn primary" href="#projects" id="hero-projects-btn">Zobacz projekty</a>
+          <a class="btn" href="https://github.com/jpudelko-main" target="_blank" rel="noopener" id="hero-github-btn">GitHub</a>
+          <a class="btn" href="#contact" id="hero-contact-btn">Kontakt</a>
+        </p>
+        <p class="note" id="hero-note">
+          Tip: Zmień linki na swoje. Dodaj <span class="kbd">cv_ngs.pdf</span> i <span class="kbd">thesis.pdf</span> do katalogu głównego.
+        </p>
+      </div>
+      <div class="card">
+        <h2 id="highlights-heading">Highlights</h2>
+        <ul id="highlights-list">
+          <li><strong>RNA-seq Pipeline</strong> – FastQC, HISAT2, featureCounts, DESeq2</li>
+          <li><strong>Operon <em>spv</em> – BLAST/AlphaFold</strong> – NCBI/BLAST API, MSA, syntenia, predykcja struktury</li>
+          <li><strong>QSAR toksyczności</strong> – RDKit, scikit-learn, walidacja zewnętrzna</li>
+        </ul>
+        <div>
+          <span class="tag">Python</span>
+          <span class="tag">KNIME</span>
+          <span class="tag">GitHub</span>
+          <span class="tag">Linux</span>
+          <span class="tag">PyMol</span>
+          <span class="tag">WebFlags</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- O MNIE -->
+    <section id="about" class="card" style="margin-top:16px">
+      <h2 id="about-heading">O mnie</h2>
+      <p id="about-text">
+        Jestem absolwentem studiów licencjackich na kierunku Bioinformatyka, zainteresowany rozwojem w obszarze analiz NGS, biostatystyki oraz genomiki.
+        Fascynuje mnie praca z danymi biologicznymi, które można przekuć w konkretne wnioski naukowe i rozwiązania dla medycyny.
+        Doświadczenie zawodowe zdobywałem m.in. w gastronomii (barman) oraz logistyce (ocena techniczna kontenerów), co nauczyło mnie odpowiedzialności, pracy pod presją czasu i dbałości o szczegóły.
+        Bardzo dobrze odnajduję się w pracy zespołowej – przez lata trenowałem sporty drużynowe.
+        Poza nauką i pracą rozwijam pasje związane z surfingiem, budową campervana, muzyką elektroniczną oraz grami planszowymi (głównie Catan), co pomaga mi zachować balans i kreatywne podejście do wyzwań.
+      </p>
+      <ul id="about-list">
+        <li><strong>Specjalizacje:</strong> NGS, RNA-seq, filogenetyka, QSAR (podstawy)</li>
+        <li><strong>Bioinformatyczne narzędzia:</strong> PyMol, ClustalO, MEGA X, KNIME, AlphaFold, WebFlags, ConSurf</li>
+        <li><strong>Stack:</strong> Python, Git/GitHub, Linux, Jupyter, HTML (podstawy), SQL (podstawy)</li>
+        <li><strong>Zainteresowania:</strong> medycyna spersonalizowana, projektowanie leków, toksykologia obliczeniowa, NGS</li>
+        <li><strong>Tryb pracy:</strong> Gdańsk / zdalnie / hybrydowo / relokacja</li>
+      </ul>
+    </section>
+
+    <!-- PROJEKTY -->
+    <section id="projects" class="card" style="margin-top:16px">
+      <h2 id="projects-heading">Projekty</h2>
+      <div class="grid">
+        <article class="card">
+          <h3 id="proj1-title">Clustal Omega REST Client</h3>
+          <p id="proj1-body">
+            Automatyzacja MSA w Pythonie z użyciem REST API Clustal Omega (EBI): obsługa wielu plików FASTA z folderu, HTTP requests, monitoring statusu zadania, pobieranie wyników w formie archiwum ZIP.
+          </p>
+          <p><a href="https://github.com/jpudelko-main/PROGRAMY_LICENCJAT/blob/main/run_clustalo_api.py" target="_blank" rel="noopener" id="proj1-link">Repo</a></p>
+        </article>
+        <article class="card">
+          <h3 id="proj2-title">BLAST/Entrez Pipeline</h3>
+          <p id="proj2-body">
+            Pythonowy pipeline (Biopython, NCBI BLAST: blastn/megablast/tblastn, Entrez) do wyszukiwania homologów operonu spv w różnych grupach taksonomicznych, filtrowania po pokryciu sekwencji oraz automatycznego pobierania i porządkowania pełnych sekwencji i fragmentów HSP w formacie FASTA.
+          </p>
+          <p><a href="https://github.com/jpudelko-main/PROGRAMY_LICENCJAT/blob/main/SZUKANIE_SEKWENCJI.py" target="_blank" rel="noopener" id="proj2-link">Repo</a></p>
+        </article>
+        <article class="card">
+          <h3 id="proj3-title">QSAR toksyczności</h3>
+          <p id="proj3-body">
+            Chemoinformatics clustering i selekcja związków w Pythonie (RDKit, odciski palcowe Morgan, podobieństwo Tanimoto, algorytm Butina) do dalszych analiz QSAR.
+          </p>
+          <p><a href="https://github.com/jpudelko-main/PROJEKTOWANIE_LEKOW_NANO/blob/main/Z5JP.py" target="_blank" rel="noopener" id="proj3-link">Repo</a></p>
+        </article>
+      </div>
+    </section>
+
+    <!-- UMIEJĘTNOŚCI -->
+    <section id="skills" class="card" style="margin-top:16px">
+      <h2 id="skills-heading">Umiejętności</h2>
+      <p id="skills-ai">
+        <strong>AI / struktury 3D:</strong> AlphaFold, PyMOL, MEGA X – analiza i wizualizacja struktur białek, filogenetyka.
+      </p>
+      <p id="skills-code">
+        <strong>Kod / analiza danych:</strong> Python, R, Jupyter, Git/GitHub, Linux, KNIME.
+      </p>
+      <p id="skills-soft">
+        <strong>Kompetencje miękkie:</strong> komunikatywność, praca zespołowa (sporty drużynowe), kreatywne rozwiązywanie problemów.
+      </p>
+    </section>
+
+    <!-- PRACA LICENCJACKA -->
+    <section id="thesis" class="card" style="margin-top:16px">
+      <h2 id="thesis-heading">Praca licencjacka (PDF)</h2>
+      <details open>
+        <summary id="thesis-summary">Podgląd osadzony (kliknij, aby zwinąć/rozwinąć)</summary>
+        <div class="pdfbox" role="region" aria-label="Podgląd PDF">
+          <iframe src="thesis.pdf" title="Praca licencjacka" width="100%" height="100%" style="border:0"></iframe>
+        </div>
+      </details>
+      <p>
+        <a class="btn primary" href="thesis.pdf" target="_blank" rel="noopener" id="thesis-open">Otwórz w nowej karcie</a>
+        <a class="btn" href="thesis.pdf" download id="thesis-download">Pobierz PDF</a>
+      </p>
+      <p class="note" id="thesis-note">Jeśli PDF nie ładuje się u kogoś w przeglądarce, link „Otwórz” zawsze zadziała.</p>
+    </section>
+
+    <!-- KONTAKT / WIZYTÓWKA -->
+    <section id="contact" class="card" style="margin-top:16px">
+      <h2 id="contact-heading">Kontakt</h2>
+      <p id="contact-intro">
+        Jeśli chcesz porozmawiać o współpracy, stażu lub projektach bioinformatycznych – odezwij się śmiało.
+      </p>
+      <ul id="contact-list">
+        <li><strong>Email:</strong> <a href="mailto:j.pudelko@hotmail.com">j.pudelko@hotmail.com</a></li>
+        <li><strong>Lokalizacja:</strong> Gdańsk, Polska (otwarty na relokację / pracę zdalną)</li>
+        <li><strong>GitHub:</strong> <a href="https://github.com/jpudelko-main" target="_blank" rel="noopener">github.com/jpudelko-main</a></li>
+        <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/jakub-pudelko-tech/" target="_blank" rel="noopener">linkedin.com/in/jakub-pudelko-tech</a></li>
+      </ul>
+    </section>
+
+    <footer class="footer">
+      © <span id="y"></span> <span id="footer-name">Jakub Pudelko</span> · 
+      <a href="mailto:j.pudelko@hotmail.com" id="footer-mail">Mail: j.pudelko@hotmail.com</a> · 
+      <a href="https://www.linkedin.com/in/jakub-pudelko-tech/" target="_blank" rel="noopener" id="footer-linkedin">LinkedIn</a>
+    </footer>
+  </div>
+
+  <!-- wstawia bieżący rok do stopki -->
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    const translations = {
+      pl: {
+        subtitle: "Junior Bioinformatics • NGS • Python",
+        navProjects: "Projekty",
+        navSkills: "Umiejętności",
+        navAbout: "O mnie",
+        navThesis: "Praca licencjacka",
+        navContact: "Kontakt",
+        navCv: "📄 Pobierz CV",
+        heroTitle: "Cześć! Szukam wymagającej roli w innowacyjnej organizacji, w której jako bioinformatyk rozwinę swoje umiejętności analityczne i techniczne.",
+        heroSub: "Interesuje mnie praca z NGS, bioinformatyką strukturalną i chemią obliczeniową – wszędzie tam, gdzie dane realnie coś zmieniają.",
+        heroProjectsBtn: "Zobacz projekty",
+        heroGithubBtn: "GitHub",
+        heroContactBtn: "Kontakt",
+        heroNote: "Tip: Zmień linki na swoje. Dodaj <span class=\"kbd\">cv_ngs.pdf</span> i <span class=\"kbd\">thesis.pdf</span> do katalogu głównego.",
+        highlightsHeading: "Highlights",
+        highlightsList: `
+          <li><strong>RNA-seq Pipeline</strong> – FastQC, HISAT2, featureCounts, DESeq2</li>
+          <li><strong>Operon <em>spv</em> – BLAST/AlphaFold</strong> – NCBI/BLAST API, MSA, syntenia, predykcja struktury</li>
+          <li><strong>QSAR toksyczności</strong> – RDKit, scikit-learn, walidacja zewnętrzna</li>
+        `,
+        aboutHeading: "O mnie",
+        aboutText: `
+          Jestem absolwentem studiów licencjackich na kierunku Bioinformatyka, zainteresowany rozwojem w obszarze analiz NGS, biostatystyki oraz genomiki.
+          Fascynuje mnie praca z danymi biologicznymi, które można przekuć w konkretne wnioski naukowe i rozwiązania dla medycyny.
+          Doświadczenie zawodowe zdobywałem m.in. w gastronomii (barman) oraz logistyce (ocena techniczna kontenerów), co nauczyło mnie odpowiedzialności, pracy pod presją czasu i dbałości o szczegóły.
+          Bardzo dobrze odnajduję się w pracy zespołowej – przez lata trenowałem sporty drużynowe.
+          Poza nauką i pracą rozwijam pasje związane z surfingiem, budową campervana, muzyką elektroniczną oraz grami planszowymi (głównie Catan), co pomaga mi zachować balans i kreatywne podejście do wyzwań.
+        `,
+        aboutList: `
+          <li><strong>Specjalizacje:</strong> NGS, RNA-seq, filogenetyka, QSAR (podstawy)</li>
+          <li><strong>Bioinformatyczne narzędzia:</strong> PyMol, ClustalO, MEGA X, KNIME, AlphaFold, WebFlags, ConSurf</li>
+          <li><strong>Stack:</strong> Python, Git/GitHub, Linux, Jupyter, HTML (podstawy), SQL (podstawy)</li>
+          <li><strong>Zainteresowania:</strong> medycyna spersonalizowana, projektowanie leków, toksykologia obliczeniowa, NGS</li>
+          <li><strong>Tryb pracy:</strong> Gdańsk / zdalnie / hybrydowo / relokacja</li>
+        `,
+        projectsHeading: "Projekty",
+        proj1Title: "Clustal Omega REST Client",
+        proj1Body: "Automatyzacja MSA w Pythonie z użyciem REST API Clustal Omega (EBI): obsługa wielu plików FASTA z folderu, HTTP requests, monitoring statusu zadania, pobieranie wyników w formie archiwum ZIP.",
+        proj2Title: "BLAST/Entrez Pipeline",
+        proj2Body: "Pythonowy pipeline (Biopython, NCBI BLAST: blastn/megablast/tblastn, Entrez) do wyszukiwania homologów operonu spv w różnych grupach taksonomicznych, filtrowania po pokryciu sekwencji oraz automatycznego pobierania i porządkowania pełnych sekwencji i fragmentów HSP w formacie FASTA.",
+        proj3Title: "QSAR toksyczności",
+        proj3Body: "Chemoinformatics clustering i selekcja związków w Pythonie (RDKit, odciski palcowe Morgan, podobieństwo Tanimoto, algorytm Butina) do dalszych analiz QSAR.",
+        skillsHeading: "Umiejętności",
+        skillsAi: "<strong>AI / struktury 3D:</strong> AlphaFold, PyMOL, MEGA X – analiza i wizualizacja struktur białek, filogenetyka.",
+        skillsCode: "<strong>Kod / analiza danych:</strong> Python, R, Jupyter, Git/GitHub, Linux, KNIME.",
+        skillsSoft: "<strong>Kompetencje miękkie:</strong> komunikatywność, praca zespołowa (sporty drużynowe), kreatywne rozwiązywanie problemów.",
+        thesisHeading: "Praca licencjacka (PDF)",
+        thesisSummary: "Podgląd osadzony (kliknij, aby zwinąć/rozwinąć)",
+        thesisOpen: "Otwórz w nowej karcie",
+        thesisDownload: "Pobierz PDF",
+        thesisNote: "Jeśli PDF nie ładuje się u kogoś w przeglądarce, link „Otwórz” zawsze zadziała.",
+        contactHeading: "Kontakt",
+        contactIntro: "Jeśli chcesz porozmawiać o współpracy, stażu lub projektach bioinformatycznych – odezwij się śmiało.",
+        contactList: `
+          <li><strong>Email:</strong> <a href="mailto:j.pudelko@hotmail.com">j.pudelko@hotmail.com</a></li>
+          <li><strong>Lokalizacja:</strong> Gdańsk, Polska (otwarty na relokację / pracę zdalną)</li>
+          <li><strong>GitHub:</strong> <a href="https://github.com/jpudelko-main" target="_blank" rel="noopener">github.com/jpudelko-main</a></li>
+          <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/jakub-pudelko-tech/" target="_blank" rel="noopener">linkedin.com/in/jakub-pudelko-tech</a></li>
+        `,
+        footerMail: "Mail: j.pudelko@hotmail.com"
+      },
+      en: {
+        subtitle: "Junior Bioinformatician • NGS • Python",
+        navProjects: "Projects",
+        navSkills: "Skills",
+        navAbout: "About",
+        navThesis: "Bachelor thesis",
+        navContact: "Contact",
+        navCv: "📄 Download CV",
+        heroTitle: "Hi! I'm looking for a challenging role in an innovative organization where I can grow as a bioinformatician and develop my analytical and technical skills.",
+        heroSub: "I'm interested in NGS, structural bioinformatics and computational chemistry – wherever data can make a real impact.",
+        heroProjectsBtn: "View projects",
+        heroGithubBtn: "GitHub",
+        heroContactBtn: "Contact",
+        heroNote: "Tip: Replace links with your own and add <span class=\"kbd\">cv_ngs.pdf</span> and <span class=\"kbd\">thesis.pdf</span> to the root folder.",
+        highlightsHeading: "Highlights",
+        highlightsList: `
+          <li><strong>RNA-seq Pipeline</strong> – FastQC, HISAT2, featureCounts, DESeq2</li>
+          <li><strong>spv operon – BLAST/AlphaFold</strong> – NCBI/BLAST API, MSA, synteny, structure prediction</li>
+          <li><strong>Toxicity QSAR</strong> – RDKit, scikit-learn, external validation</li>
+        `,
+        aboutHeading: "About",
+        aboutText: `
+          I hold a BSc in Bioinformatics and I am focused on developing in NGS analysis, biostatistics and genomics.
+          I enjoy working with biological data and turning it into concrete scientific insights and potential applications in medicine.
+          I have professional experience in gastronomy (bartender) and logistics (technical inspection of containers), which taught me responsibility, working under time pressure and attention to detail.
+          I work very well in teams – I have played team sports for many years.
+          Outside of science and work I enjoy surfing, working on my campervan, electronic music and board games (mainly Catan), which helps me keep balance and a creative mindset.
+        `,
+        aboutList: `
+          <li><strong>Specializations:</strong> NGS, RNA-seq, phylogenetics, basic QSAR</li>
+          <li><strong>Bioinformatics tools:</strong> PyMol, ClustalO, MEGA X, KNIME, AlphaFold, WebFlags, ConSurf</li>
+          <li><strong>Stack:</strong> Python, Git/GitHub, Linux, Jupyter, basic HTML, basic SQL</li>
+          <li><strong>Interests:</strong> personalized medicine, drug design, computational toxicology, NGS</li>
+          <li><strong>Work mode:</strong> Gdańsk / remote / hybrid / open to relocation</li>
+        `,
+        projectsHeading: "Projects",
+        proj1Title: "Clustal Omega REST Client",
+        proj1Body: "Python automation of MSA using the Clustal Omega (EBI) REST API: processing multiple FASTA files from a folder, HTTP requests, job status polling and ZIP result download.",
+        proj2Title: "BLAST/Entrez Pipeline",
+        proj2Body: "Python pipeline (Biopython, NCBI BLAST: blastn/megablast/tblastn, Entrez) for discovering spv operon homologs across taxonomic groups, filtering by coverage and automatically saving full sequences and HSP fragments in FASTA format.",
+        proj3Title: "Toxicity QSAR",
+        proj3Body: "Chemoinformatics clustering and compound selection in Python (RDKit, Morgan fingerprints, Tanimoto similarity, Butina algorithm) for downstream QSAR modelling.",
+        skillsHeading: "Skills",
+        skillsAi: "<strong>AI / 3D structures:</strong> AlphaFold, PyMOL, MEGA X – protein structure analysis and visualization, phylogenetics.",
+        skillsCode: "<strong>Coding / data analysis:</strong> Python, R, Jupyter, Git/GitHub, Linux, KNIME.",
+        skillsSoft: "<strong>Soft skills:</strong> communication, teamwork (team sports), creative problem solving.",
+        thesisHeading: "Bachelor thesis (PDF)",
+        thesisSummary: "Embedded preview (click to collapse/expand)",
+        thesisOpen: "Open in new tab",
+        thesisDownload: "Download PDF",
+        thesisNote: "If the PDF does not load in someone's browser, the “Open” link will always work.",
+        contactHeading: "Contact",
+        contactIntro: "If you would like to discuss cooperation, an internship or bioinformatics projects – feel free to reach out.",
+        contactList: `
+          <li><strong>Email:</strong> <a href="mailto:j.pudelko@hotmail.com">j.pudelko@hotmail.com</a></li>
+          <li><strong>Location:</strong> Gdańsk, Poland (open to relocation / remote work)</li>
+          <li><strong>GitHub:</strong> <a href="https://github.com/jpudelko-main" target="_blank" rel="noopener">github.com/jpudelko-main</a></li>
+          <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/jakub-pudelko-tech/" target="_blank" rel="noopener">linkedin.com/in/jakub-pudelko-tech</a></li>
+        `,
+        footerMail: "Email: j.pudelko@hotmail.com"
+      }
+    };
+
+    function applyTranslations(lang) {
+      const t = translations[lang];
+
+      document.getElementById("subtitle").textContent = t.subtitle;
+      document.getElementById("nav-projects").textContent = t.navProjects;
+      document.getElementById("nav-skills").textContent = t.navSkills;
+      document.getElementById("nav-about").textContent = t.navAbout;
+      document.getElementById("nav-thesis").textContent = t.navThesis;
+      document.getElementById("nav-contact").textContent = t.navContact;
+      document.getElementById("nav-cv").textContent = t.navCv;
+
+      document.getElementById("hero-title").textContent = t.heroTitle;
+      document.getElementById("hero-sub").textContent = t.heroSub;
+      document.getElementById("hero-projects-btn").textContent = t.heroProjectsBtn;
+      document.getElementById("hero-github-btn").textContent = t.heroGithubBtn;
+      document.getElementById("hero-contact-btn").textContent = t.heroContactBtn;
+      document.getElementById("hero-note").innerHTML = t.heroNote;
+
+      document.getElementById("highlights-heading").textContent = t.highlightsHeading;
+      document.getElementById("highlights-list").innerHTML = t.highlightsList;
+
+      document.getElementById("about-heading").textContent = t.aboutHeading;
+      document.getElementById("about-text").innerHTML = t.aboutText;
+      document.getElementById("about-list").innerHTML = t.aboutList;
+
+      document.getElementById("projects-heading").textContent = t.projectsHeading;
+      document.getElementById("proj1-title").textContent = t.proj1Title;
+      document.getElementById("proj1-body").textContent = t.proj1Body;
+      document.getElementById("proj2-title").textContent = t.proj2Title;
+      document.getElementById("proj2-body").textContent = t.proj2Body;
+      document.getElementById("proj3-title").textContent = t.proj3Title;
+      document.getElementById("proj3-body").textContent = t.proj3Body;
+
+      document.getElementById("skills-heading").textContent = t.skillsHeading;
+      document.getElementById("skills-ai").innerHTML = t.skillsAi;
+      document.getElementById("skills-code").innerHTML = t.skillsCode;
+      document.getElementById("skills-soft").innerHTML = t.skillsSoft;
+
+      document.getElementById("thesis-heading").textContent = t.thesisHeading;
+      document.getElementById("thesis-summary").textContent = t.thesisSummary;
+      document.getElementById("thesis-open").textContent = t.thesisOpen;
+      document.getElementById("thesis-download").textContent = t.thesisDownload;
+      document.getElementById("thesis-note").textContent = t.thesisNote;
+
+      document.getElementById("contact-heading").textContent = t.contactHeading;
+      document.getElementById("contact-intro").textContent = t.contactIntro;
+      document.getElementById("contact-list").innerHTML = t.contactList;
+
+      document.getElementById("footer-mail").textContent = t.footerMail;
+
+      document.documentElement.lang = (lang === "pl" ? "pl" : "en");
+    }
+
+    let currentLang = "pl";
+    const langToggle = document.getElementById("lang-toggle");
+    langToggle.addEventListener("click", () => {
+      currentLang = currentLang === "pl" ? "en" : "pl";
+      applyTranslations(currentLang);
+      langToggle.textContent = currentLang === "pl" ? "EN" : "PL";
+    });
+
+    // startowo PL (żeby wszystko było spójne z obiektem tłumaczeń)
+    applyTranslations("pl");
+  </script>
+</body>
+</html>
